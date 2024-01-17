@@ -17,12 +17,16 @@ opt.cursorline = true
 
 -- Indenting
 opt.expandtab = true
-opt.shiftwidth = 2
+opt.shiftwidth = 4
 opt.smartindent = true
-opt.tabstop = 2
-opt.softtabstop = 2
+opt.tabstop = 4
+opt.softtabstop = 4
+
+-- Scrolling
+opt.scrolloff = 4
 
 opt.fillchars = { eob = " " }
+opt.fillchars = { vert = "│"}
 opt.ignorecase = true
 opt.smartcase = true
 opt.mouse = "a"
@@ -30,7 +34,8 @@ opt.mouse = "a"
 -- Numbers
 opt.number = true
 opt.numberwidth = 2
-opt.ruler = false
+opt.ruler = true
+opt.relativenumber = true
 
 -- disable nvim intro
 opt.shortmess:append "sI"
@@ -43,7 +48,7 @@ opt.timeoutlen = 400
 opt.undofile = true
 
 -- interval for writing swap file to disk, also used by gitsigns
-opt.updatetime = 250
+opt.updatetime = 150
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
@@ -97,10 +102,10 @@ autocmd("BufWritePost", {
     vim.opt.statusline = "%!v:lua.require('nvchad.statusline." .. config.ui.statusline.theme .. "').run()"
 
     -- tabufline
-    if config.ui.tabufline.enabled then
-      require("plenary.reload").reload_module "nvchad.tabufline.modules"
-      vim.opt.tabline = "%!v:lua.require('nvchad.tabufline.modules').run()"
-    end
+    -- if config.ui.tabufline.enabled then
+    --   require("plenary.reload").reload_module "nvchad.tabufline.modules"
+    --   vim.opt.tabline = "%!v:lua.require('nvchad.tabufline.modules').run()"
+    -- end
 
     require("base46").load_all_highlights()
     -- vim.cmd("redraw!")

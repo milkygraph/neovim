@@ -88,6 +88,14 @@ require("lspconfig").clangd.setup {
 require("lspconfig").pyright.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
+  -- disable type checking for performance
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "off",
+      },
+    },
+  },
 }
 
 require("lspconfig").tsserver.setup {
@@ -99,5 +107,13 @@ require("lspconfig").gopls.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
 }
+
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = false,
+  signs = true,
+  update_in_insert = true,
+})
+
 
 return M
