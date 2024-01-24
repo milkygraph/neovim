@@ -12,6 +12,7 @@ M.on_attach = function(client, bufnr)
 
   utils.load_mappings("lspconfig", { buffer = bufnr })
 
+  vim.api.nvim_command("autocmd CursorHold * lua vim.diagnostic.open_float { border = 'rounded', focusable = false }")
   if client.server_capabilities.signatureHelpProvider then
     require("nvchad.signature").setup(client)
   end

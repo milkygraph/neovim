@@ -19,12 +19,12 @@ local options = {
     layout_strategy = "horizontal",
     layout_config = {
       horizontal = {
-        prompt_position = "top",
+        prompt_position = "bottom",
         preview_width = 0.55,
         results_width = 0.8,
       },
       vertical = {
-        mirror = false,
+        mirror = true,
       },
       width = 0.87,
       height = 0.80,
@@ -58,6 +58,14 @@ local options = {
       case_mode = "smart_case",
     },
   },
+  pickers = {
+    buffers = {
+      initial_mode = "normal"
+    },
+    lsp_references = {
+      initial_mode = "normal"
+    },
+  }
 }
 
 return options
