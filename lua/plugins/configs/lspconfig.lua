@@ -87,21 +87,28 @@ require("lspconfig").clangd.setup {
 }
 
 require("lspconfig").pyright.setup {
-  on_attach = M.on_attach,
-  capabilities = M.capabilities,
-  -- disable type checking for performance
-  settings = {
-    python = {
-      analysis = {
-        typeCheckingMode = "off",
-      },
+    on_attach = M.on_attach,
+    capabilities = M.capabilities,
+    settings = {
+        python = {
+            analysis = {
+                diagnosticMode = "workspace",
+                reportPossiblyUnboundVariables = false,
+            },
+        },
     },
-  },
 }
 
 require("lspconfig").tsserver.setup {
   on_attach = M.on_attach,
   capabilities = M.capabilities,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+}
+
+require("lspconfig").eslint.setup {
+  on_attach = M.on_attach,
+  capabilities = M.capabilities,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 }
 
 require("lspconfig").gopls.setup {
@@ -111,7 +118,7 @@ require("lspconfig").gopls.setup {
 
 vim.diagnostic.config({
   underline = true,
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   update_in_insert = true,
 })

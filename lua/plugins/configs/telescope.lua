@@ -65,6 +65,9 @@ local options = {
     lsp_references = {
       initial_mode = "normal"
     },
+    lsp_document_symbols = {
+      initial_mode = "normal"
+    },
   }
 }
 
